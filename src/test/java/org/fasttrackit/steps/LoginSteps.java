@@ -2,6 +2,7 @@ package org.fasttrackit.steps;
 
 import net.thucydides.core.annotations.Step;
 import org.fasttrackit.pages.AccountPage;
+import org.fasttrackit.pages.Product1Page;
 import org.fasttrackit.pages.HomePage;
 import org.fasttrackit.pages.LoginPage;
 import org.junit.Assert;
@@ -11,6 +12,9 @@ public class LoginSteps {
     private HomePage homePage;
     private LoginPage loginPage;
     private AccountPage accountPage;
+    private Product1Page product1Page;
+
+
 
     @Step
     public void navigateToLogin(){

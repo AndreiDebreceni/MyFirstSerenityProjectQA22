@@ -16,7 +16,7 @@ public class LoginTest extends BaseTest {
         loginSteps.navigateToLogin();
         loginSteps.enterCredentials(Constants.USER_EMAIL, Constants.USER_PASSWORD);
         loginSteps.clickLogIn();
-        loginSteps.checkUserIsLoggedIn("Hello, Cosmin Fast!");
+        loginSteps.checkUserIsLoggedIn("Hello, Debre DBR Andrei!");
     }
 
     @Test
