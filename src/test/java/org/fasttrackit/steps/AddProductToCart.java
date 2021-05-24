@@ -3,6 +3,7 @@ package org.fasttrackit.steps;
 
 import net.thucydides.core.annotations.Step;
 import org.fasttrackit.pages.*;
+import org.junit.Assert;
 
 public class AddProductToCart {
     private HomePage homePage;
@@ -10,6 +11,7 @@ public class AddProductToCart {
     private AccountPage accountPage;
     private ProductsOnHomePage products;
     private Product1Page product1Page;
+    private SearchResultPage searchResultPage;
 
     @Step
     public void openHomePage(){
@@ -25,5 +27,7 @@ public class AddProductToCart {
         product1Page.addToCartButton();
     }
 
-
+    public void addProdToCartByName(String productName) {
+        Assert.assertTrue(searchResultPage.addProductToCart(productName));
+    }
 }

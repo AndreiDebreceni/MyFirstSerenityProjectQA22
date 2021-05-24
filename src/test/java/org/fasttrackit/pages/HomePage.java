@@ -34,7 +34,7 @@ public class HomePage extends PageObject {
     }
     @FindBy (css = "button[title='Search']")
     private WebElementFacade searchButton;
-    public void searchButton(){
+    public void clickSearchButton(){
         clickOn(searchButton);
     }
 

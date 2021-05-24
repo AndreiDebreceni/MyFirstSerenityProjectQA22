@@ -3,7 +3,11 @@ package org.fasttrackit.pages;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
+import net.thucydides.core.annotations.DefaultUrl;
 
+import java.util.List;
+
+@DefaultUrl("http://testfasttrackit.info/selenium-test/checkout/cart/")
 public class CartPage extends PageObject {
 
     @FindBy (css = "#shopping-cart-table > tbody > tr > td.product-cart-actions > input")
@@ -38,6 +42,36 @@ public class CartPage extends PageObject {
     private WebElementFacade checkOutButton;
     public void checkOutButton (){clickOn(checkOutButton);
     }
+    @FindBy(css = ".product-cart-price .product")
+    private List<WebElementFacade> listOfPrices;
+    @FindBy(css = "strong .price")
+    private WebElementFacade grandTotalPrice;
+    @FindBy(css = "tbody tr:nth-child(2) .a-right .price")
+    private WebElementFacade taxPrice;
 
+
+    public int getProductPricesSum(){
+        int priceTotalCalculated = 0;
+        for(WebElementFacade element: listOfPrices){
+        priceTotalCalculated += getPriceFromCartItems(element);
+        }
+        return priceTotalCalculated;
+    }
+    private int getPriceFromCartItems(WebElementFacade elementFacade){
+        return Integer.parseInt(elementFacade.getText().replaceAll(" RON","").replaceAll(",",""));
+    }
+    public int getGrandTotalPriceInt(){
+        return getPriceFromCartItems(grandTotalPrice);
+    }
+    public int getTaxPriceInt(){
+        return getPriceFromCartItems(taxPrice);
+    }
+    public boolean checkTotalPriceSum(){
+        System.out.println("price combined: "+ getProductPricesSum());
+        System.out.println("tax price: "+ getTaxPriceInt());
+        System.out.println("total price: "+ getGrandTotalPriceInt());
+        return (getProductPricesSum()+getTaxPriceInt()) == getGrandTotalPriceInt();
+
+    }
 
 }
