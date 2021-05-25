@@ -7,7 +7,7 @@ import net.thucydides.core.annotations.DefaultUrl;
 
 import java.util.List;
 
-@DefaultUrl("http://testfasttrackit.info/selenium-test/checkout/cart/")
+@DefaultUrl("http://testfasttrackit.info/selenium-test/checkout/cart")
 public class CartPage extends PageObject {
 
     @FindBy (css = "#shopping-cart-table > tbody > tr > td.product-cart-actions > input")
@@ -42,7 +42,7 @@ public class CartPage extends PageObject {
     private WebElementFacade checkOutButton;
     public void checkOutButton (){clickOn(checkOutButton);
     }
-    @FindBy(css = ".product-cart-price .product")
+    @FindBy(css = ".product-cart-price  .price")
     private List<WebElementFacade> listOfPrices;
     @FindBy(css = "strong .price")
     private WebElementFacade grandTotalPrice;
@@ -69,7 +69,8 @@ public class CartPage extends PageObject {
     public boolean checkTotalPriceSum(){
         System.out.println("price combined: "+ getProductPricesSum());
         System.out.println("tax price: "+ getTaxPriceInt());
-        System.out.println("total price: "+ getGrandTotalPriceInt());
+        System.out.println("price combined + tax: "+ (getProductPricesSum() + getTaxPriceInt()));
+        System.out.println("grand price: " + getGrandTotalPriceInt());
         return (getProductPricesSum()+getTaxPriceInt()) == getGrandTotalPriceInt();
 
     }

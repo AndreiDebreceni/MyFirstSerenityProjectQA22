@@ -34,6 +34,7 @@ public class CartTest extends BaseTest {
     }
     @Test
     public void verifyProductPriceInCart(){
+
       searchProductsSteps.navigateToHomePage();
         searchProductsSteps.addProductToCartByName("3-YEAR WARRANTY");
       searchProductsSteps.addProductToCartByName("SWING TIME EARRINGS");
